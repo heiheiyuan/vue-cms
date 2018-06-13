@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --open --port 3000 --hot"
   },
   "keywords": [],
-  "author": "",
+  "author": "GOODBOY",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
