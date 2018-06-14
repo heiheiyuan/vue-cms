@@ -2,5 +2,5 @@ node_modules
 .git
 .idea
 .vscode
-.dist
+dist
 *.iml
