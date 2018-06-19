@@ -39,8 +39,9 @@
     #app-container {
         padding-top: 40px;
         overflow-x: hidden;
+        padding-bottom: 50px;
     }
-    .v-enter {
+    /*.v-enter {
         opacity: 0;
         transform: translateX(100%);
     }
@@ -51,6 +52,10 @@
     }
     .v-enter-active,
     .v-leave-active {
-        transition: all 0.5s ease;
+        transition: all 0.2s ease;
+    }*/
+    .v-enter,
+    .v-leave-to{
+        opacity: 0;
     }
 </style>

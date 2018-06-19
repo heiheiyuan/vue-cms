@@ -14,7 +14,12 @@ import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 //导入自己的router
 import router from './router.js'
-
+//导入格式化时间的插件
+import moment from 'moment'
+//定义全局过滤器
+Vue.filter('dateFilter',function (dateStr,pattern = "YYYY-MM-DD HH:mm:ss") {
+    return moment(dateStr).format(pattern)
+})
 //安装路由
 Vue.use(VueRouter)
 
