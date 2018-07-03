@@ -9,7 +9,7 @@
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/newslist">
                 <img src="../../img/news.png" alt="">
                 <div class="mui-media-body">新闻资讯</div></router-link></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/shareimg">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/photolist">
                 <img src="../../img/img_share.png" alt="">
                 <div class="mui-media-body">图片分享</div></router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><router-link to="/home/shopping">
@@ -42,7 +42,7 @@
         },
         methods: {
             getCarouselData() {
-                this.$http.get("http://localhost:666/api/getCarousels").then(result => {
+                this.$http.get("api/getCarousels").then(result => {
                     if (result && result.body.returnCode === 0)  {
                         this.carouselList = result.body.data;
                     }else {

@@ -2,7 +2,7 @@
     <div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
-                <a href="#">
+                <router-link :to="'/home/newsInfo/' + item.id">
                     <img class="mui-media-object mui-pull-right" :src="item.imgUrl">
                     <div class="mui-media-body">
                         <h1>{{ item.title }}</h1>
@@ -11,7 +11,7 @@
                             <span>点击: {{ item.click }} 次</span>
                         </p>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -36,7 +36,7 @@
         },
         methods: {
             getNewsList() {
-                this.$http.post("http://localhost:666/api/getNewsList",this.newsListCondition).then(result => {
+                this.$http.post("api/getNewsList",this.newsListCondition).then(result => {
                     if (result && result.body.returnCode === 0) {
                         this.newslist = result.body.data;
                     } else {

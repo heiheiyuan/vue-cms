@@ -7,7 +7,7 @@ import app from './App.vue'
 //导入路由并安装
 import VueRouter from 'vue-router'
 
-import { Header, Swipe, SwipeItem  } from 'mint-ui'
+// import { Header, Swipe, SwipeItem  } from 'mint-ui'
 
 import './lib/mui/css/mui.min.css'
 
@@ -25,10 +25,17 @@ Vue.use(VueRouter)
 
 //安装资源请求
 Vue.use(VueResource)
+Vue.http.options.root = 'http://localhost:666';
+// 全局设置 post 时候表单数据格式组织形式   application/x-www-form-urlencoded
+// Vue.http.options.emulateJSON = true;
+// Vue.component(Header.name, Header)
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+import MintUI from 'mint-ui'
 
-Vue.component(Header.name, Header)
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+Vue.use(MintUI)
+
+import 'mint-ui/lib/style.css'
 
 var vm = new Vue({
     el: '#app',
