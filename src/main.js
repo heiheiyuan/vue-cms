@@ -65,13 +65,73 @@ var store = new Vuex.Sotre({
                     flag = true;
                     return true;
                 }
-            })
+            });
             //如果最终，循环完毕，得到的 flag 还是 false，则把商品数据直接 push 到 购物车中
             if (!flag) {
                 state.car.push(goodsinfo);
             }
             //当更新car之后,把car数组存储到本地的localstorage
             localStorage.setItem('car',JSON.stringify(state.car))
+        },
+        updateGoodsInfo (state,goodsinfo) {
+            state.car.some(item => {
+                if (item.id === goodsinfo.id) {
+                    item.count = parseInt(goodsinfo.count);
+                    return true;
+                }
+            });
+            localStorage.setItem('car',JSON.stringify(state.car));
+        },
+        removeFormCar (state, id) {
+            state.car.some((item,id) => {
+                if (item.id === id) {
+                    state.car.splice(i,1);
+                    return true;
+                }
+            });
+            localStorage.setItem('car',JSON.stringify(state.car));
+        },
+        updateGoodsSelected (state, info) {
+            state.car.some(item => {
+                if (item.id === info.id) {
+                    item.selected = info.selected;
+                }
+            });
+            localStorage.setItem('car',JSON.stringify(state.car));
+        }
+    },
+    getters: {
+        getAllCount (state) {
+            var c = 0;
+            state.car.forEach(item => {
+                c += item.count;
+            });
+            return c;
+        },
+        getGoodsCount (state) {
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.count;
+            });
+            return o;
+        },
+        getGoodsSelected (state) {
+            var o = {};
+            state.car.forEach(item => {
+                o[item.id] = item.selected;
+            });
+            return o;
+        },
+        getGoodsCountAndAmount(state) {
+            var o = {
+                count: 0,
+                amount: 0
+            };
+            state.car.forEach(item => {
+                o.count += item.count;
+                o.amount += item.price * item.count;
+            });
+            return o;
         }
     }
 });

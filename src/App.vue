@@ -1,7 +1,11 @@
 <template>
     <div id="app-container">
         <!--顶部Header区域-->
-        <mt-header fixed title="Vue --- SnailLemon"></mt-header>
+        <mt-header fixed title="Vue --- SnailLemon">
+            <span slot="left" @click="goBack" v-show="flag">
+                <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
 
         <!-- 中间router-view区域 -->
         <transition>
@@ -31,11 +35,33 @@
 </template>
 
 <script>
-
+    export default {
+        data () {
+            return {
+                flag: false
+            };
+        },
+        created () {
+            this.flag = this.$route.path !== "/home";
+        },
+        methods: {
+            goBack() {
+                this.$router.go(-1);
+            }
+        },
+        watch: {
+            "$route.path": function (newValue) {
+                this.flag = newValue !== "/home";
+            }
+        }
+    }
 </script>
 
 
 <style scoped lang="scss">
+    .mint-header {
+        z-index: 99;
+    }
     #app-container {
         padding-top: 40px;
         overflow-x: hidden;

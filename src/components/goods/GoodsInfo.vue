@@ -165,7 +165,7 @@
         background-color: #eeeeee;
         overflow: hidden;
         .now_price {
-            color: #red;
+            color: red;
             font-size: 16px;
             font-weight: bold;
         }
